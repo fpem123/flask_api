@@ -15,6 +15,7 @@ def condition_row_search(column, keyword, start, many):
         query = db.session.query(Condition.person_id, Concept.concept_name, 
             Condition.condition_start_datetime, Condition.condition_end_datetime, Condition.visit_occurrence_id)\
                 .join(Concept, Condition.condition_concept_id==Concept.concept_id)\
+                .filter(Condition.person_id == keyword)\
                 .offset(start).limit(start+many).all()
     elif column =="condition_concept_id":
         keyword = int(keyword)

@@ -15,6 +15,7 @@ def drug_row_search(column, keyword, start, many):
         query = db.session.query(Drug.person_id, Concept.concept_name, 
                 Drug.drug_exposure_start_datetime, Drug.drug_exposure_end_datetime, Drug.visit_occurrence_id)\
                 .join(Concept, Drug.drug_concept_id==Concept.concept_id)\
+                .filter(Drug.person_id == keyword)\
                 .offset(start).limit(start+many).all()
     elif column =="condition_concept_id":
         keyword = int(keyword)

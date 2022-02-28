@@ -9,4 +9,4 @@ class Condition(db.Model):
     condition_concept_id = db.Column(db.Integer, db.ForeignKey("concept.concept.concept_id"))
     condition_start_datetime = db.Column(db.Date, nullable=False)
     condition_end_datetime = db.Column(db.Date, nullable=False)
-    visit_occurrence_id = db.Column(db.Integer)
+    visit_occurrence_id = db.Column(db.Integer, db.ForeignKey("visit_occurrence.visit_occurrence.concept.concept_id"))
