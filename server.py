@@ -26,4 +26,4 @@ app.register_blueprint(drugController.drug_api, url_prefix="/drug")
 app.register_blueprint(deathController.death_api, url_prefix="/death")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
