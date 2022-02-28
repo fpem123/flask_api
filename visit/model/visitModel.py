@@ -13,41 +13,41 @@ def visit_row_search(column, keyword, start, many):
 
     if column =="visit_occurrence_id":
         keyword = int(keyword)
-        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name, 
+        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name.label("visit_occurrence_name"), 
                 Visit.visit_start_datetime, Visit.visit_end_datetime, Visit.person_id)\
                 .join(Concept, Visit.visit_concept_id==Concept.concept_id)\
                 .filter(Visit.visit_occurrence_id == keyword)\
                 .offset(start).limit(start+many).all()
     elif column =="visit_concept_id":
         keyword = int(keyword)
-        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name, 
+        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name.label("visit_occurrence_name"), 
                 Visit.visit_start_datetime, Visit.visit_end_datetime, Visit.person_id)\
                 .join(Concept, Visit.visit_concept_id==Concept.concept_id)\
                 .filter(Visit.visit_concept_id == keyword)\
                 .offset(start).limit(start+many).all()
     elif column =="visit_start_datetime":
         keyword = datetime.strptime(keyword, "%Y-%m-%d").date()
-        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name, 
+        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name.label("visit_occurrence_name"), 
                 Visit.visit_start_datetime, Visit.visit_end_datetime, Visit.person_id)\
                 .join(Concept, Visit.visit_concept_id==Concept.concept_id)\
                 .filter(Visit.visit_start_datetime==keyword)\
                 .offset(start).limit(start+many).all()
     elif column =="visit_end_datetime":
         keyword = datetime.strptime(keyword, "%Y-%m-%d").date()
-        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name, 
+        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name.label("visit_occurrence_name"), 
                 Visit.visit_start_datetime, Visit.visit_end_datetime, Visit.person_id)\
                 .join(Concept, Visit.visit_concept_id==Concept.concept_id)\
                 .filter(Visit.visit_end_datetime==keyword)\
                 .offset(start).limit(start+many).all()
     elif column == "person_id":
         keyword = int(keyword)
-        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name, 
+        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name.label("visit_occurrence_name"), 
                 Visit.visit_start_datetime, Visit.visit_end_datetime, Visit.person_id)\
                 .join(Concept, Visit.visit_concept_id==Concept.concept_id)\
                 .filter(Visit.person_id==keyword)\
                 .offset(start).limit(start+many).all()
     else:
-        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name, 
+        query = db.session.query(Visit.visit_occurrence_id, Concept.concept_name.label("visit_occurrence_name"), 
                 Visit.visit_start_datetime, Visit.visit_end_datetime, Visit.person_id)\
                 .join(Concept, Visit.visit_concept_id==Concept.concept_id)\
                 .offset(start).limit(start+many).all()
