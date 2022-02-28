@@ -3,6 +3,25 @@ import visit.model.visitModel as model
 
 visit_api = Blueprint('visit_api', __name__)
 
+@visit_api.route("/", methods=["GET"])
+def visit_search():
+    try:
+        column = request.args.get('column', type=str, default="all")
+        keyword = request.args.get('keyword', type=str, default="")
+        start = request.args.get('start', type=int, default=0)
+        many = request.args.get('many', type=int, default=10)
+    except Exception as e:
+        return {"result": "error"}, 400
+        
+    try:
+        res = model.visit_row_search(column, keyword, start, many)
+
+        return {"result": res}, 200
+    except Exception as e:
+        print(e)
+        return {"result": "error"}, 400
+
+
 @visit_api.route("/visit", methods=["GET"])
 def visit_concept_count():
     try:
