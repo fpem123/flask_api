@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from person.controller import personController
 from visit.controller import visitController
 from concept.controller import conceptController
+from condition.controller import conditionController
 
 db_host = input("[DB HOST] : ")
 db_port = input("[DB port] : ")
@@ -18,6 +19,7 @@ db = SQLAlchemy(app)
 app.register_blueprint(personController.person_api, url_prefix="/person")
 app.register_blueprint(visitController.visit_api, url_prefix="/visit")
 app.register_blueprint(conceptController.concept_api, url_prefix="/concept")
+app.register_blueprint(conditionController.condition_api, url_prefix="/condition")
 
 if __name__ == '__main__':
     app.run(debug=True)
