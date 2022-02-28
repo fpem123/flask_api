@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from person.controller import personController
+from visit.controller import visitController
 
 db_host = input("[DB HOST] : ")
 db_port = input("[DB port] : ")
@@ -14,6 +15,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{db_user}:{db_password}@{
 db = SQLAlchemy(app)
 
 app.register_blueprint(personController.person_api, url_prefix="/person")
+app.register_blueprint(visitController.visit_api, url_prefix="/visit")
 
 if __name__ == '__main__':
     app.run(debug=True)
