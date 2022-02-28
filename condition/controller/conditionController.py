@@ -3,6 +3,9 @@ import condition.model.conditionModel as model
 
 condition_api = Blueprint('condition_api', __name__)
 
+
+##
+#   진단 테이블의 row를 조회
 @condition_api.route("/", methods=["GET"])
 def condition_search():
     try:

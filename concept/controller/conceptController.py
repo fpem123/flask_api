@@ -3,6 +3,8 @@ import concept.model.conceptModel as model
 
 concept_api = Blueprint('concept_api', __name__)
 
+##
+#   concept_id 정보 테이블 검색
 @concept_api.route("/", methods=["GET"])
 def visit_concept_count():
     try:

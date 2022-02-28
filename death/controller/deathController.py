@@ -3,6 +3,9 @@ import death.model.deathModel as model
 
 death_api = Blueprint('death_api', __name__)
 
+
+##
+#   사망 테이블의 row를 조회
 @death_api.route("/", methods=["GET"])
 def condition_search():
     try:

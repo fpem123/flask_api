@@ -3,6 +3,8 @@ import person.model.personModel as model
 
 person_api = Blueprint('person_api', __name__)
 
+##
+#   환자 테이블의 row를 조회
 @person_api.route("/", methods=["GET"])
 def visit_search():
     try:
@@ -21,6 +23,9 @@ def visit_search():
         print(e)
         return {"result": "error"}, 400
 
+
+##
+#   전체 환자 수를 반환
 @person_api.route("/all", methods=["GET"])
 def person_count():
     try:
@@ -31,6 +36,8 @@ def person_count():
         return {"result": "error"}, 400
 
 
+##
+#   성별별 환자 수를 반환
 @person_api.route("/gender", methods=["GET"])
 def person_gender_count():
     try:
@@ -41,6 +48,8 @@ def person_gender_count():
         return {"result": "error"}, 400
 
 
+##
+#   인종별 환자 수를 반환
 @person_api.route("/race", methods=["GET"])
 def person_race_count():
     try:
@@ -51,6 +60,8 @@ def person_race_count():
         return {"result": "error"}, 400
 
 
+##
+#   민족별 환자 수를 반환
 @person_api.route("/ethnicity", methods=["GET"])
 def person_ethnicity_count():
     try:
@@ -61,6 +72,8 @@ def person_ethnicity_count():
         return {"result": "error"}, 400
 
 
+##
+#   사망 환자 수를 반환
 @person_api.route("/death", methods=["GET"])
 def person_death_count():
     try:

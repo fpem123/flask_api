@@ -3,6 +3,8 @@ import drug.model.drugModel as model
 
 drug_api = Blueprint('drug_api', __name__)
 
+##
+#   의약 테이블의 row를 조회
 @drug_api.route("/", methods=["GET"])
 def drug_search():
     try:
